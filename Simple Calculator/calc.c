@@ -1,8 +1,9 @@
 // START OF THE CODE
 /*
 Copyright (C) Mithun 2024
+PART OF Simple projects in C
 Is licensed under MIT. You have permission to redistribute, edit / modify the code. 
-But, you have to include `Copyright (C) Mithun 2024`
+But, you have to include `Copyright (C) Mithun 2024` if you're distributing it.
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -17,46 +18,57 @@ If you want know about the MIT license, check out https://opensource.org/license
 #include <stdbool.h>
 
 int main() { 
+
+    printf("Welcome to the Calculator!\n");
+    printf("This is a part of Simple projects in C\n");
+
     int n1, n2; // n1 = number 1 and n2 = number 2
     char op; // op = operator
     bool run = true; // For the while loop
 
     while (run) {
         printf("Enter your first number: "); // Example: 1
-        scanf("%d", n1);
+        scanf("%d", &n1);
+        getchar();
         printf("Enter the operator: "); // Example: +
         scanf("%c", &op);
         printf("Enter your second number: "); // Example: 2
-        scanf("%d", n2);
+        scanf("%d", &n2);
         switch (op) {
+
+            /*
+            Fact: The you can only the OR symbol (||) in only one of the case statments else it'll not work!
+            */
+
             case '*': // Is it multipliction?
             case 'x': // Alternative for the above
-                printf("\nYour answer is: " + (n1 * n2));
+                printf("Your answer is: %d", n1 * n2);
                 run = false;
                 break;
             case '/': // Is it division?
-                printf("\nYour answer is: " + (n1 / n2));
+                if (n2 == 0) {
+                    printf("Failed to calcuate your answer. Error: Cannot divide by 0.");
+                    break;
+                } else {
+                    printf("Your answer is: %d", n1 / n2);
+                }
                 run = false;
                 break;
             case '+': // Is it addation?
-                printf("\nYour answer is: " + (n1 + n2));
+                printf("Your answer is: %d", n1 + n2);
                 run = false;
                 break;
             case '-': // Is it subtration?
-                if (n1 == 0 || n2 == 0) {
-                    printf("Are you stupid? Do you not know that any number cannot be divided by 0?");
-                    break;
-                } else {
-                    printf("Your answer is: " + (n1 / n2));
-                    run = false;
-                    break;
-                }
+                printf("Your answer is: %d", n1 - n2);
+                run = false;
+                break;
                 
             default: // If none, then do it again
-                printf("Unknown operator.");
+                printf("Unknown operator. Please use +, -, *, or /\n");
                 break;
         }
         printf("\n\nCalculator by Mithun! Made in C"); // End it with some credits
     }
+    return 0;
 }
 // END OF THE CODE
